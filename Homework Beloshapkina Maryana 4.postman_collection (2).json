@@ -1,0 +1,1320 @@
+{
+	"info": {
+		"_postman_id": "98bd69a3-2da5-4cf2-8312-e5ba10c76099",
+		"name": "Homework Beloshapkina Maryana 4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15327824"
+	},
+	"item": [
+		{
+			"name": "Get all Lists",
+			"item": [
+				{
+					"name": "CREATE List 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Fixed ReferenceError by using the correct variable name",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"var id = jsonData.id",
+									"pm.environment.set(\"id\",id)",
+									"",
+									"",
+									"pm.test(\"Response has list ID\", function () {",
+									"    const res = pm.response.json();",
+									"    pm.expect(res).to.have.property(\"id\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"{{$randomFirstName}}\",\n    \"content\":\"homework4.1\",\n    \"due_date\":\"123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/folder/90156800122/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"folder",
+								"90156800122",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE List 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Fixed ReferenceError by using the correct variable name",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"var id = jsonData.id",
+									"pm.environment.set(\"id\",id)",
+									"",
+									"pm.test(\"Authorization header is present\", function () {",
+									"    pm.expect(pm.request.headers.has(\"Authorization\")).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"{{$randomFirstName}}\",\n    \"content\":\"homework4.2\",\n    \"due_date\":\"123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/folder/90156800122/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"folder",
+								"90156800122",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET all Lists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"jsonData.lists.forEach(item =>{",
+									"    console.log(item.id)",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "pk_188624974_WVAEE0HN1M9DCV4UI5T14VZ2YIMM16UE",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/folder/90156800122/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"folder",
+								"90156800122",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete List 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"console.log(\"Response body:\", pm.response.text());",
+									"",
+									"pm.test(\"User was deleted successfully\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/list/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete List 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/list/901510882375",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list",
+								"901510882375"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET all Lists Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response contains 'lists' array\", function () {",
+									"    const res = pm.response.json();",
+									"    pm.expect(res).to.have.property(\"lists\").that.is.an(\"array\");",
+									"});",
+									"",
+									"pm.test(\"'lists' array is not empty\", function () {",
+									"    const res = pm.response.json();",
+									"    pm.expect(res.lists.length).to.be.above(0);",
+									"});",
+									"",
+									"pm.test(\"Each item in 'lists' has id and name\", function () {",
+									"    const res = pm.response.json();",
+									"    res.lists.forEach(item => {",
+									"        pm.expect(item).to.have.property(\"id\");",
+									"        pm.expect(item).to.have.property(\"name\");",
+									"    });",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "pk_188624974_WVAEE0HN1M9DCV4UI5T14VZ2YIMM16UE",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/folder/90156800122/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"folder",
+								"90156800122",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CREATE List",
+			"item": [
+				{
+					"name": "CREATE List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Fixed ReferenceError by using the correct variable name",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"var id = jsonData.id",
+									"pm.environment.set(\"id\",id)",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"{{$randomFirstName}}\",\n    \"content\":\"homework4\",\n    \"due_date\":\"123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/folder/90156713285/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"folder",
+								"90156713285",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/list/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/list/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UPDATE list",
+			"item": [
+				{
+					"name": "CREATE list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Fixed ReferenceError by using the correct variable name",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"var id = jsonData.id",
+									"pm.environment.set(\"id\",id)",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"{{$randomFirstName}}\",\n    \"content\":\"homework4\",\n    \"due_date\":\"123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/folder/90156713285/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"folder",
+								"90156713285",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check new name\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    var expectedName = pm.collectionVariables.get(\"ListName\");",
+									"    pm.expect(jsonData.name).to.eql(expectedName);",
+									"});",
+									"",
+									"pm.test(\"Check content\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.content).to.eql(\"homework4 new\");",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var name = pm.variables.replaceIn('{{$randomFirstName}}')",
+									"console.log('this is my new name')",
+									"console.log(name)",
+									"",
+									"pm.collectionVariables.set(\"ListName\", name);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"{{ListName}}\",\n    \"content\":\"homework4 new\",\n    \"due_date\":\"123456789\",\n    \"due_date_time\":\"true\",\n    \"priority\":\"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/list/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/list/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DELETE List",
+			"item": [
+				{
+					"name": "CREATE list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Fixed ReferenceError by using the correct variable name",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"var id = jsonData.id",
+									"pm.environment.set(\"id\",id)",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"{{$randomFirstName}}\",\n    \"content\":\"homework4\",\n    \"due_date\":\"123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/folder/90156713285/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"folder",
+								"90156713285",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/list/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Negative tests",
+			"item": [
+				{
+					"name": "GET all Lists with invalid folder ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "pk_188624974_WVAEE0HN1M9DCV4UI5T14VZ2YIMM16UE",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/folder/9015673285/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"folder",
+								"9015673285",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET all Lists with empty folder ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "pk_188624974_WVAEE0HN1M9DCV4UI5T14VZ2YIMM16UE",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/folder//list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"folder",
+								"",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE list with empty body",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/folder/90156713285/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"folder",
+								"90156713285",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE list with invalid folder ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"$randomFirstName\",\n    \"content\":\"homework4\",\n    \"due_date\":\"123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/folder/9015671385/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"folder",
+								"9015671385",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE List without Autorization key",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"new {{$randomUserName}}\",\n    \"content\":\"homework4 new\",\n    \"due_date\":\"123456789\",\n    \"due_date_time\":\"true\",\n    \"priority\":\"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/list/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE List with empty list ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"new {{$randomUserName}}\",\n    \"content\":\"homework4 new\",\n    \"due_date\":\"123456789\",\n    \"due_date_time\":\"true\",\n    \"priority\":\"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/list/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE already deleted list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "pk_188624974_05RT3BHQDG55DKCKKSJ786V6X5FLKMJG",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/list/901510882359",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list",
+								"901510882359"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "ListName",
+			"value": ""
+		}
+	]
+}
