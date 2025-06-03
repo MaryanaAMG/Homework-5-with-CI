@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Run Postman Tests
-          command: newman run postman/collection.json
+          command: newman run homework.postman_environment (2)
 workflows:
   test-workflow:
     jobs:
